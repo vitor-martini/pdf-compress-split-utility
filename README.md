@@ -1,4 +1,4 @@
-# PDF Shrink
+# PDF Compression and Splitting Utility
 
 This utility provides functionality to compress and split PDF files, ensuring that individual pages and entire files do not exceed specified size limits. It utilizes Ghostscript for compression and PDF-Lib for PDF manipulation.
 ## Features 
@@ -11,19 +11,10 @@ This utility provides functionality to compress and split PDF files, ensuring th
 - **For Linux:**  Install Ghostscript using your package manager (e.g., `sudo apt-get install ghostscript` on Ubuntu).
 ## Installation
 
-Clone this repository:
+To use this library in your project, you can install it via npm:
 
 ```sh
-git clone https://github.com/yourusername/pdf-compress-split.git
-cd pdf-compress-split
-```
-
-
-
-Install the required npm packages:
-
-```sh
-npm install
+npm install pdf-compress-split-utility
 ```
 
 
@@ -33,7 +24,7 @@ npm install
 The `compressPDF` function compresses individual pages of a PDF to ensure they do not exceed the specified size limit.
 
 ```js
-const { compressPDF } = require('./index');
+const { compressPDF } = require('pdf-compress-split-utility');
 const path = require('path');
 
 const inputPath = path.join(__dirname, 'path-to-your-pdf.pdf');
@@ -55,7 +46,7 @@ const KB = 1024;
 The `splitPDF` function splits a PDF file into smaller parts if the total file size exceeds the specified limit.
 
 ```js
-const { splitPDF } = require('./index');
+const { splitPDF } = require('pdf-compress-split-utility');
 const path = require('path');
 
 const inputPath = path.join(__dirname, 'path-to-your-pdf.pdf');
@@ -77,7 +68,7 @@ const KB = 1024;
 You can combine both functions to first compress the pages and then split the PDF file if necessary.
 
 ```js
-const { compressPDF, splitPDF } = require('./index');
+const { compressPDF, splitPDF } = require('pdf-compress-split-utility');
 const path = require('path');
 
 const inputPath = path.join(__dirname, 'path-to-your-pdf.pdf');
@@ -100,3 +91,6 @@ const KB = 1024;
 ## Notes 
 - Ensure Ghostscript is installed and accessible from your command line. Verify by running `gs --version` (Linux) or `gswin64c --version` / `gswin32c --version` (Windows). 
 - Adjust the paths and size limits (`maxPageSize` for `compressPDF` and `maxFileSize` for `splitPDF`) as per your requirements.
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](https://chatgpt.com/c/LICENSE)  file for details.
