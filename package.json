@@ -1,13 +1,29 @@
 {
-  "name": "poc-44933",
+  "name": "pdf-compress-split-utility",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A utility for compressing and splitting PDF files using Ghostscript and PDF-Lib.",
+  "main": "./src/index.js",
   "scripts": {
     "start": "node ./src/index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vitor-martini/pdf-compress-split-utility.git"
+  },
+  "keywords": [
+    "pdf",
+    "compression",
+    "splitting",
+    "ghostscript",
+    "pdf-lib",
+    "utility"
+  ],
+  "author": "Seu Nome",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vitor-martini/pdf-compress-split-utility/issues"
+  },
+  "homepage": "https://github.com/vitor-martini/pdf-compress-split-utility#readme",
   "dependencies": {
     "fs-extra": "^11.2.0",
     "pdf-lib": "^1.17.1",

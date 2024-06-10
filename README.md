@@ -1,4 +1,4 @@
-# PDF Compression and Splitting Utility
+# PDF Shrink
 
 This utility provides functionality to compress and split PDF files, ensuring that individual pages and entire files do not exceed specified size limits. It utilizes Ghostscript for compression and PDF-Lib for PDF manipulation.
 ## Features 
