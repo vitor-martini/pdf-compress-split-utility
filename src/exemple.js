@@ -1,7 +1,7 @@
 const path = require('path');
 const { compressPDF, splitPDF } = require('./index');
 
-const inputPath = path.join(__dirname, 'ex-contratos', '3totalMaior10MbpaginasMaiores10Mb.pdf');
+const inputPath = path.join(__dirname, 'path-to-your-pdf.pdf');
 const KB = 1024;
 
 (async () => {
