@@ -8,6 +8,10 @@ const isWindows = os.platform() === 'win32';
 const gsCommand = isWindows ? (os.arch() === 'x64' ? 'gswin64c' : 'gswin32c') : 'gs';
 
 async function compressSinglePage(inputPageBytes, outputPath, maxPageSize) {
+    if (inputPageBytes.length <= maxPageSize) {
+        return inputPageBytes;
+    }
+    
     const tempPdfPath = path.join(__dirname, 'temp_single_page.pdf');
     fs.writeFileSync(tempPdfPath, inputPageBytes);
 
