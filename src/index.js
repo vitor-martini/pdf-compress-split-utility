@@ -68,6 +68,7 @@ async function compressPDF(inputPath, maxPageSize) {
     const fileBuffer = await fs.readFile(inputPath);
     const pdfDoc = await PDFDocument.load(fileBuffer);
     const numPages = pdfDoc.getPageCount();
+    let modified = false;
 
     const newPdfDoc = await PDFDocument.create();
 
@@ -79,9 +80,10 @@ async function compressPDF(inputPath, maxPageSize) {
         const pageSize = pageBytes.length;
 
         if (pageSize > maxPageSize) {
+            modified = true;
             const tempCompressedPath = path.join(__dirname, `compressed_page_${i + 1}.pdf`);
             pageBytes = await compressSinglePage(pageBytes, tempCompressedPath, maxPageSize);
-            fs.unlinkSync(tempCompressedPath);
+            await fs.unlink(tempCompressedPath);
         }
 
         const pageDocCompressed = await PDFDocument.load(pageBytes);
@@ -89,8 +91,10 @@ async function compressPDF(inputPath, maxPageSize) {
         newPdfDoc.addPage(compressedPage);
     }
 
-    const newPdfBytes = await newPdfDoc.save();
-    fs.writeFileSync(inputPath, newPdfBytes);
+    if (modified) {
+        const newPdfBytes = await newPdfDoc.save();
+        await fs.writeFile(inputPath, newPdfBytes);
+    }
 }
 
 async function getPageSize(pdfDoc, pageIndex) {
